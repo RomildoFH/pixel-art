@@ -32,7 +32,7 @@ for(var line = 1; line <= tamanhoBoard; line ++) {
         pixelBoard.appendChild(pixel);
     }    
 }
-
+//Determinando o preto como cor inicial
 function corInicial () {
     let black = document.getElementById('black')
     black.className = 'color selected';
@@ -41,19 +41,42 @@ function corInicial () {
 window.onload = function () {
     // alert('Olá');
     corInicial ();
+    selecionaCor ();
+    paint ();
 }
 
-let paletaDeCores = document.getElementById('color-palette');
+//Criando função que selecione uma cor da paleta de cores
 
-paletaDeCores.addEventListener('click', function (evento) {
-    let cores = document.getElementsByClassName('color');
-    for (let index = 0; index < cores.length; index ++) {
-        cores[index].className = 'color';
-    }
-    let corSelecionada = evento.target.style.backgroundColor;
-    console.log(corSelecionada);
-    let elementoSelecionado = evento.target;
-    elementoSelecionado.className = 'color selected'
-    console.log(elementoSelecionado);
-});
+let corSelecionada = '';
+
+function selecionaCor () {
+
+    let paletaDeCores = document.getElementById('color-palette');
+
+    paletaDeCores.addEventListener('click', function (evento) {
+        let cores = document.getElementsByClassName('color');
+        for (let index = 0; index < cores.length; index ++) {
+            cores[index].className = 'color';
+        }
+        corSelecionada = evento.target.style.backgroundColor;
+        console.log(corSelecionada);
+        let elementoSelecionado = evento.target;
+        elementoSelecionado.className = 'color selected';
+        console.log(elementoSelecionado);
+    });
+}
+
+function paint () {
+    pixelBoard.addEventListener('click', function (evento) {
+        if (evento.target.style.backgroundColor !== corSelecionada) {
+        evento.target.style.backgroundColor = corSelecionada;
+        } else {
+            evento.target.style.backgroundColor = 'white';
+        }
+        console.log(evento.target);        
+    })
+}
+
+
+
 
