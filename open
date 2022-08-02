@@ -1,0 +1,26 @@
+
+> test
+> cypress run
+
+
+================================================================================
+
+  (Run Starting)
+
+  ┌────────────────────────────────────────────────────────────────────────────────────────────────┐
+  │ Cypress:    4.0.2                                                                              │
+  │ Browser:    Electron 78 (headless)                                                             │
+  │ Specs:      1 found (project.spec.js)                                                          │
+  └────────────────────────────────────────────────────────────────────────────────────────────────┘
+
+
+────────────────────────────────────────────────────────────────────────────────────────────────────
+                                                                                                    
+  Running:  project.spec.js                                                                 (1 of 1)
+
+
+  1 - Adicione à página o título "Paleta de Cores"
+    ✓ Verifica se contém um elemento `h1` com o id `title` com o título correto (446ms)
+
+  2 - Adicione à página uma paleta contendo quatro cores distintas
+    ✓ A paleta de cores deve ser um elemento com `id` denominado `color-palette` e ter mais de 0px de altura e de largura. (328ms)
