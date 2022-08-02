@@ -1,5 +1,5 @@
 //Criando paleta de cores
-let color1 = document.getElementById('black');
+
 let arrayCores = ['black', 'red', 'green', 'blue'];
 
 function criarCores (arrayCores) {
@@ -32,4 +32,28 @@ for(var line = 1; line <= tamanhoBoard; line ++) {
         pixelBoard.appendChild(pixel);
     }    
 }
+
+function corInicial () {
+    let black = document.getElementById('black')
+    black.className = 'color selected';
+}
+
+window.onload = function () {
+    // alert('Olá');
+    corInicial ();
+}
+
+let paletaDeCores = document.getElementById('color-palette');
+
+paletaDeCores.addEventListener('click', function (evento) {
+    let cores = document.getElementsByClassName('color');
+    for (let index = 0; index < cores.length; index ++) {
+        cores[index].className = 'color';
+    }
+    let corSelecionada = evento.target.style.backgroundColor;
+    console.log(corSelecionada);
+    let elementoSelecionado = evento.target;
+    elementoSelecionado.className = 'color selected'
+    console.log(elementoSelecionado);
+});
 
