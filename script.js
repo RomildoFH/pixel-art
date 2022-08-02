@@ -13,3 +13,23 @@ function criarCores (arrayCores) {
     }
 }
 criarCores (arrayCores);
+
+let pixelContainer = document.querySelector('#pixel-container');
+let tamanhoBoard = 5;
+let pixelBoard = document.querySelector('#pixel-board');
+// pixelBoard.style.backgroundColor = 'blue';
+pixelBoard.style.marginLeft = 'auto';
+pixelBoard.style.marginRight = 'auto';
+let boardWidth = 42 * tamanhoBoard;
+let boardWidthString = boardWidth + "px";
+pixelBoard.style.width = boardWidthString;
+
+for(var line = 1; line <= tamanhoBoard; line ++) {
+    for (var index2 = 1; index2 <= tamanhoBoard; index2 ++) {
+        let pixel = document.createElement('div');
+        pixel.className = 'pixel';
+        pixel.style.backgroundColor = 'white';
+        pixelBoard.appendChild(pixel);
+    }    
+}
+
