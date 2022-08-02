@@ -59,10 +59,10 @@ function selecionaCor () {
             cores[index].className = 'color';
         }
         corSelecionada = evento.target.style.backgroundColor;
-        console.log(corSelecionada);
+        // console.log(corSelecionada);
         let elementoSelecionado = evento.target;
         elementoSelecionado.className = 'color selected';
-        console.log(elementoSelecionado);
+        // console.log(elementoSelecionado);
     });
 }
 
@@ -73,10 +73,21 @@ function paint () {
         } else {
             evento.target.style.backgroundColor = 'white';
         }
-        console.log(evento.target);        
+        // console.log(evento.target);        
     })
 }
 
-
+function resetBoard () {
+    let btnClear = document.getElementById('clear-board');
+    let pixels = document.getElementsByClassName('pixel');
+    btnClear.addEventListener('click', function () {
+        for(let index = 0; index < pixels.length; index ++) {
+            pixels[index].style.backgroundColor = 'white';
+            // pixelBg.style.backgroundColor = 'white';
+            // console.log(pixelBg);
+        }
+    });
+}
+resetBoard ();
 
 
