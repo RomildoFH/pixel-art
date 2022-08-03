@@ -1,12 +1,16 @@
 //Criando paleta de cores
 
 let arrayCores = ['black', 'red', 'green', 'blue'];
-let listaDeCores = ['Blue', 'BlueViolet', 'Brown', 'CadetBlue', 'Chartreuse', 'Coral', 'Chocolate', 'Crimson', 'Cyan', 'DarkMagenta', 'DarkGreen', 'DarkOrange', 'FireBrick', 'Gold', 'Green', 'GreenYellow', 'Indigo', 'LightSalmon', 'Red'];
+let listaDeCores1 = ['Blue', 'BlueViolet', 'Brown', 'CadetBlue', 'Chartreuse', 'Coral', 'Chocolate'];
+let listaDeCores2 = ['Crimson', 'Cyan', 'DarkMagenta', 'DarkGreen', 'DarkOrange', 'FireBrick'];
+let listaDeCores3 = ['Gold', 'Green', 'GreenYellow', 'Indigo', 'LightSalmon', 'Red'];
 
 //Tornando paleta de cores aleatórias, exceto o preto
 function coresAleatórias () {
     for (let index = 1; index < arrayCores.length; index ++) {
-        arrayCores[index] = listaDeCores[Math.floor(Math.random() * listaDeCores.length)];
+        arrayCores[1] = listaDeCores1[Math.floor(Math.random() * listaDeCores1.length)];
+        arrayCores[2] = listaDeCores2[Math.floor(Math.random() * listaDeCores2.length)];
+        arrayCores[3] = listaDeCores3[Math.floor(Math.random() * listaDeCores3.length)];
     }
     return(arrayCores);
 }
@@ -24,12 +28,30 @@ function criarCores (arrayCores) {
 }
 criarCores (arrayCores);
 
+//Validando o input
 let tamanhoBoardInicial = 5;
+let boardSize = document.getElementById('board-size');
+let btnVQV = document.getElementById('generate-board');
 
-function criarBoard (tamanhoBoardInicial) {
-    let pixelContainer = document.querySelector('#pixel-container');
-    
+function validateInput (){
+        if (boardSize.value === "") {
+            alert('Board inválido!');        
+        } else if (boardSize.value > 50) {
+            boardSize.value = 50;
+        } else if (boardSize.value < 5) {
+            boardSize.value = 5;
+        } 
+        tamanhoBoardInicial = boardSize.value 
+        return(tamanhoBoardInicial);      
+}
+// btnVQV.addEventListener('click', function () {
+//     validateInput ();
+//     removePixels ();
+//     criarBoard ();
+// });
 
+//Criando o pixel-board
+function criarBoard () {
     let pixelBoard = document.querySelector('#pixel-board');
     // pixelBoard.style.backgroundColor = 'blue';
     pixelBoard.style.marginLeft = 'auto';
@@ -47,19 +69,26 @@ function criarBoard (tamanhoBoardInicial) {
         }    
     }
 }
-criarBoard (tamanhoBoardInicial)
+criarBoard ();
+
+function removePixels () {
+    let pixelBoard = document.querySelector('#pixel-board');
+    while (pixelBoard.hasChildNodes()) {
+        pixelBoard.removeChild(pixelBoard.firstChild);
+      }
+}
+
+
+btnVQV.addEventListener('click', function () {
+    validateInput ();
+    removePixels ();
+    criarBoard ();
+});
 
 //Determinando o preto como cor inicial
 function corInicial () {
     let black = document.getElementById('black')
     black.className = 'color selected';
-}
-
-window.onload = function () {
-    // alert('Olá');
-    corInicial ();
-    selecionaCor ();
-    paint ();
 }
 
 //Criando função que selecione uma cor da paleta de cores
@@ -106,25 +135,13 @@ function resetBoard () {
         }
     });
 }
-resetBoard ();
 
 
-let boardSize = document.getElementById('board-size');
-let boardSizeValue = "";
-let btnVQV = document.getElementById('generate-board');
-let pixels = document.getElementsByClassName('pixel');
-let tamanhoBoard = tamanhoBoardInicial;
-function validateInput (){
-        boardSizeValue = boardSize.value;
-        if (boardSize.value === "") {
-            alert('Board inválido!');        
-        } else if (boardSize.value > 50) {
-            boardSize.value = 50;
-        } else if (boardSize.value < 5) {
-            boardSize.value = 5;
-        } 
-        tamanhoBoard = boardSize.value 
-        console.log(boardSizeValue)       
-        return(tamanhoBoard);        
+
+window.onload = function () {
+    // alert('Olá');
+    corInicial ();
+    selecionaCor ();
+    paint ();
+    resetBoard ();
 }
-btnVQV.addEventListener('click', validateInput)
