@@ -1,6 +1,16 @@
 //Criando paleta de cores
 
 let arrayCores = ['black', 'red', 'green', 'blue'];
+let listaDeCores = ['Blue', 'BlueViolet', 'Brown', 'CadetBlue', 'Chartreuse', 'Coral', 'Chocolate', 'Crimson', 'Cyan', 'DarkMagenta', 'DarkGreen', 'DarkOrange', 'FireBrick', 'Gold', 'Green', 'GreenYellow', 'Indigo', 'LightSalmon', 'Red'];
+
+//Tornando paleta de cores aleatórias, exceto o preto
+function coresAleatórias () {
+    for (let index = 1; index < arrayCores.length; index ++) {
+        arrayCores[index] = listaDeCores[Math.floor(Math.random() * listaDeCores.length)];
+    }
+    return(arrayCores);
+}
+coresAleatórias ()
 
 function criarCores (arrayCores) {
     let paletaDeCores = document.getElementById('color-palette');
@@ -99,25 +109,22 @@ function resetBoard () {
 resetBoard ();
 
 
-    let boardSize = document.getElementById('board-size');
-    let boardSizeValue = "";
-    let btnVQV = document.getElementById('generate-board');
-    let pixels = document.getElementsByClassName('pixel');
-    let tamanhoBoard = tamanhoBoardInicial;
-    function validateInput (){
+let boardSize = document.getElementById('board-size');
+let boardSizeValue = "";
+let btnVQV = document.getElementById('generate-board');
+let pixels = document.getElementsByClassName('pixel');
+let tamanhoBoard = tamanhoBoardInicial;
+function validateInput (){
         boardSizeValue = boardSize.value;
-        if (boardSize.value < 5) {
-            boardSize.value = 5;
+        if (boardSize.value === "") {
+            alert('Board inválido!');        
         } else if (boardSize.value > 50) {
             boardSize.value = 50;
-        }
+        } else if (boardSize.value < 5) {
+            boardSize.value = 5;
+        } 
         tamanhoBoard = boardSize.value 
         console.log(boardSizeValue)       
         return(tamanhoBoard);        
-    }
-    btnVQV.addEventListener('click', function () {
-        if (boardSize.value === "") {
-            alert('Board inválido!');
-        }
-    })
-
+}
+btnVQV.addEventListener('click', validateInput)
