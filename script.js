@@ -1,4 +1,3 @@
-/* eslint-disable no-param-reassign */
 // Criando paleta de cores
 
 const arrayCores = ['black', 'red', 'green', 'blue'];
@@ -14,6 +13,7 @@ const listaDeCores1 = [
 const listaDeCores2 = ['Crimson', 'Cyan', 'DarkMagenta', 'DarkGreen', 'DarkOrange', 'FireBrick'];
 const listaDeCores3 = ['Gold', 'Green', 'GreenYellow', 'Indigo', 'LightSalmon', 'Red'];
 const pixelboardId = '#pixel-board';
+const colorPalette = 'color-palette';
 
 // Tornando paleta de cores aleatórias, exceto o preto
 function coresAleatórias() {
@@ -26,13 +26,13 @@ function coresAleatórias() {
 }
 coresAleatórias();
 
-function criarCores(arrayCores) {
-  const paletaDeCores = document.getElementById('color-palette');
-  for (let index = 0; index < arrayCores.length; index += 1) {
+function criarCores(colorsArray) {
+  const paletaDeCores = document.getElementById(colorPalette);
+  for (let index = 0; index < colorsArray.length; index += 1) {
     const cor = document.createElement('div');
     cor.className = 'color';
-    cor.id = arrayCores[index];
-    cor.style.backgroundColor = arrayCores[index];
+    cor.id = colorsArray[index];
+    cor.style.backgroundColor = colorsArray[index];
     paletaDeCores.appendChild(cor);
   }
 }
@@ -100,7 +100,7 @@ function corInicial() {
 let corSelecionada = '';
 
 function selecionaCor() {
-  const paletaDeCores = document.getElementById('color-palette');
+  const paletaDeCores = document.getElementById(colorPalette);
 
   paletaDeCores.addEventListener('click', (evento) => {
     const cores = document.getElementsByClassName('color');
@@ -116,11 +116,12 @@ function selecionaCor() {
 function paint() {
   const pixelBoard = document.querySelector(pixelboardId);
   pixelBoard.addEventListener('click', (evento) => {
-    if (evento.target.style.backgroundColor !== corSelecionada
-      && evento.target.id !== 'pixel-board') {
-      evento.target.style.backgroundColor = corSelecionada;
+    const { target } = evento;
+    if (target.style.backgroundColor !== corSelecionada
+      && target.id !== 'pixel-board') {
+      target.style.backgroundColor = corSelecionada;
     } else {
-      evento.target.style.backgroundColor = 'white';
+      target.style.backgroundColor = 'white';
     }
   });
 }
@@ -137,7 +138,7 @@ function resetBoard() {
 
 btnRandom.addEventListener('click', () => {
   for (let index = 0; index < 4; index += 1) {
-    const colorPallet = document.getElementById('color-palette');
+    const colorPallet = document.getElementById(colorPalette);
     if (colorPallet.hasChildNodes()) {
       colorPallet.removeChild(colorPallet.children[0]);
     }
@@ -146,8 +147,7 @@ btnRandom.addEventListener('click', () => {
   criarCores(arrayCores);
 });
 
-window.onload = function () {
-  // alert('Olá');
+window.onload = () => {
   corInicial();
   selecionaCor();
   paint();
