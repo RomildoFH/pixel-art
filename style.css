@@ -1,26 +1,106 @@
-.color-palette {
-    width: 300px;
-    height: 60px;
-    margin-left: auto;
-    margin-right: auto;
+* {
+  color: white;
+  margin: 0;
+}
+
+h1 {
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+  color: rgb(240, 197, 89);
+}
+
+header h1 {
+  text-align: center;
+  text-shadow: 2px 2px 2px black;
+  color: rgb(240, 197, 89);
+  font-size: 50px;
+}
+
+body {
+  background-color: black;
+  background-image: url('https://cdn.pixabay.com/photo/2018/12/08/03/46/game-over-3862774_960_720.jpg');
+  background-size: cover;
+}
+
+#color-container {
+  display: flex;
+  justify-content: center;
+  margin: 20px 0;
+}
+
+#color-palette {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  width: fit-content;
+  height: 40px;
+}
+
+#buttons {
+  display: flex;
+  justify-content: center;
+}
+
+#clear-board {
+  color: blue;
+  font-weight: 700;
+  margin: 0 3px;
+}
+
+#board-size {
+  color: blue;
+  font-weight: 700;
+  margin: 0 3px;
+  text-align: center;
+}
+
+#generate-board {
+  color: blue;
+  font-weight: 700;
+  margin: 0 3px;
+}
+
+
+#pixel-container {
+  margin-top: 10px;
+  display: flex;
+  justify-content: center;
+  max-width: 100%;
+}
+
+#pixel-board {
+  display: flex;
+  flex-flow: row wrap;
+  justify-content: center;
+  width: fit-content;
+  max-width: 460px;
+  background-color: rgba(0, 0, 0, 0.5);
 }
 
 .color {
-    border: 1px solid black;
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    background-color: black;
-    margin-left: 5px;
+  border: 1px solid white;
+  width: 40px;
+  height: 40px;
+  display: inline-block;
+  background-color: black;
+  margin-left: 5px;
 }
 
 .pixel {
-    border: 1px solid black;
-    width: 40px;
-    height: 40px;
-    display: inline-block;
-    background-color: black;
-    margin: 0px;
-    padding: 0px;
+  border: 1px solid black;
+  flex-grow: 1;
+  width: 20px;
+  height: 20px;
+  display: inline-block;
+  background-color: black;
+  margin: 0;
+  padding: 0;
 }
 
+#random {
+  border: 1px solid white;
+  margin-left: 5px;
+  width: 40px;
+  background-image: url('https://cdn-icons-png.flaticon.com/512/3580/3580278.png');
+  background-size: contain;
+}
