@@ -47,8 +47,8 @@ const btnRandom = document.getElementById('random');
 function validateInput() {
   if (boardSize.value === '') {
     alert('Board inválido!');
-  } else if (boardSize.value > 50) {
-    boardSize.value = 50;
+  } else if (boardSize.value > 40) {
+    boardSize.value = 40;
   } else if (boardSize.value < 5) {
     boardSize.value = 5;
   }
@@ -60,9 +60,12 @@ function criarBoard() {
   const pixelBoard = document.querySelector(pixelboardId);
   pixelBoard.style.marginLeft = 'auto';
   pixelBoard.style.marginRight = 'auto';
-  const boardWidth = 42 * tamanhoBoardInicial;
-  const boardWidthString = `${boardWidth}px`;
-  pixelBoard.style.width = boardWidthString;
+  pixelBoard.style.display = 'grid';
+  let columns = '';
+  for (let index = 0; index < tamanhoBoardInicial; index += 1) {
+    columns += '1fr ';
+  }
+  pixelBoard.style.gridTemplateColumns = columns;
 
   for (let line = 1; line <= tamanhoBoardInicial; line += 1) {
     for (let index2 = 1; index2 <= tamanhoBoardInicial; index2 += 1) {
